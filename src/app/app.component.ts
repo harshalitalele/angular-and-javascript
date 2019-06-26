@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as sum from './sum';
+import * as add from './arr-addition';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,6 @@ export class AppComponent {
 
   add() {
     const arr = this.elems.split(',');
-    this.value = sum.add(arr);
+    this.value = add(arr);
   }
 }

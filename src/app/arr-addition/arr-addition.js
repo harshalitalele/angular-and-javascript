@@ -1,16 +1,16 @@
-/*var sum = (function() {
+/*var arr-addition = (function() {
   return function add(arr) {
-    var sum = 0;
+    var arr-addition = 0;
     for(var i in arr) {
-      sum += arr[i];
+      arr-addition += arr[i];
     }
-    return sum;
+    return arr-addition;
   };
 } ());*/
-function sum(arr) {
+function Add(arr) {
   var sum = 0;
   for(var i in arr) {
-    sum += arr[i];
+    sum += parseFloat(arr[i]);
   }
   return sum;
 }
@@ -21,9 +21,12 @@ function sum(arr) {
   } else if (typeof module === 'object' && module.exports) {
     // expose as commonjs module
     module.exports = factory();
+    alert("arr-addition method found in module.exports");
   } else {
-    root.sum = factory();
+    alert("arr-addition method found in root.arr-addition");
+    root.Add = factory();
   }
 } (this, function () {
-  return sum;
+  alert("arr-addition method found in this, function");
+  return Add;
 }));
