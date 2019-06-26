@@ -4,19 +4,59 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<h2>Add Numbers: </h2>
-<input type="text" [(ngModel)]="elems"/>
-<button (click)="add()">Calculate addition</button>
-Value: {{value}}
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="#">test 1</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="#">test 2</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="#">test 3</a></h2>
-  </li>
-</ul>
-
+<div>
+  <p>
+    This sample Angular7 application uses a very simple javascript library to add numbers of a string like '1,2,3,4,5'.
+  </p>
+</div>
+<h2>Addition application Demo:</h2>
+<div>
+  Input numbers to be added here (comma separated eg. 34,56,23)
+  <br/>
+  <input type="text" [(ngModel)]="elems"/>
+</div>
+<br/>
+<div>
+  <button (click)="add()">Calculate addition</button>
+</div>
+<br/>
+<div>
+  <b>Addition result from javascript library:- {{value}}</b>
+</div>
+<h2>How to use js library in Angular application:</h2>
+<div>
+  <ul>
+    <li>Create a folder with the name that you want this library to be identified in your application at any desired location inside app folder</li>
+    <li>Add your js library file inside this folder</li>
+    <li>Create a package.json file inside this same folder</li>
+    <li>
+      Add this information in package.json file<br/>
+      &#123;<br/>
+      &nbsp;&nbsp;"name": "<b>xyz</b>",<br/>
+      &nbsp;&nbsp;"version": "1.0.0",<br/>
+      &nbsp;&nbsp;"main": "<b>xyz</b>.js"<br/>
+      &#125;<br/>
+    </li>
+    <li>
+      Now write import statement in your .ts file as ->
+      import * as libRef from './<b>xyz</b>';
+    </li>
+    <li>
+      If your library is not returning a javaScript module, you need to add this code in javaScript file
+      <br/><br/>
+      (function (root, factory) &#123;<br/>
+      &nbsp;&nbsp;if (typeof define === 'function' && define.amd) &#123;<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;define([], factory);<br/>
+      &nbsp;&nbsp;} else if (typeof module === 'object' && module.exports) &#123;<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;module.exports = factory();<br/>
+      &nbsp;&nbsp;} else &#123;<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;root.<b>xyz</b> = factory();<br/>
+      &nbsp;&nbsp;}<br/>
+      &nbsp;&nbsp;} (this, function () &#123;<br/>
+      &nbsp;&nbsp;return <b>xyz</b>;<br/>
+      }));<br/>
+      <br/><br/>
+      This returns the primary function of the library as a javascript module.
+    </li>
+  </ul>
+</div>
